@@ -18,7 +18,8 @@
 }
 
 #root {
-  max-width: 1280px;
+  max-width: 844px;
+  margin: 0 auto;
 }
 
 a {
