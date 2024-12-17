@@ -4,6 +4,7 @@ import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
+  app.setGlobalPrefix('/api');
 
   const config = new DocumentBuilder()
     .setTitle('Median')
@@ -11,9 +12,8 @@ async function bootstrap() {
     .setVersion('0.1')
     .build();
   const document = SwaggerModule.createDocument(app, config);
-  SwaggerModule.setup('swagger', app, document);
+  SwaggerModule.setup('swagger', app, document, { useGlobalPrefix: true });
 
-  app.setGlobalPrefix('/api');
   await app.listen(process.env.PORT ?? 3000);
 }
 bootstrap();
