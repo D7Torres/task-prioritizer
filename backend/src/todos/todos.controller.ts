@@ -7,10 +7,10 @@ import {
   Param,
   Delete,
   Query,
-} from '@nestjs/common';
-import { TodosService } from './todos.service';
-import { CreateTodoDto } from './dto/create-todo.dto';
-import { UpdateTodoDto } from './dto/update-todo.dto';
+} from '@nestjs/common'
+import { TodosService } from './todos.service'
+import { CreateTodoDto } from './dto/create-todo.dto'
+import { UpdateTodoDto } from './dto/update-todo.dto'
 
 @Controller('todos')
 export class TodosController {
@@ -18,26 +18,26 @@ export class TodosController {
 
   @Post()
   create(@Body() createTodoDto: CreateTodoDto) {
-    return this.todosService.create(createTodoDto);
+    return this.todosService.create(createTodoDto)
   }
 
   @Get()
   findByList(@Query('listId') listId: number) {
-    return this.todosService.findByList(+listId);
+    return this.todosService.findByList(+listId)
   }
 
   @Get(':id')
   findOne(@Param('id') id: string) {
-    return this.todosService.findOne(+id);
+    return this.todosService.findOne(+id)
   }
 
   @Patch(':id')
   update(@Param('id') id: string, @Body() updateTodoDto: UpdateTodoDto) {
-    return this.todosService.update(+id, updateTodoDto);
+    return this.todosService.update(+id, updateTodoDto)
   }
 
   @Delete(':id')
   remove(@Param('id') id: string) {
-    return this.todosService.remove(+id);
+    return this.todosService.remove(+id)
   }
 }
